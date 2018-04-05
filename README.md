@@ -6,8 +6,8 @@ It's named after [Matsuo Basho](https://en.wikipedia.org/wiki/Matsuo_Bash%C5%8D)
 
 * to run 
 > npm install
-> npm start
+> npm run start
 
 * to debug
-> node inspect app.js
+> npm run debug
 
