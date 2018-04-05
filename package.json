@@ -4,7 +4,8 @@
   "description": "haiku api using express and nodejs",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "debug": "node inspect app.js"
   },
   "author": "Dalton Wais",
   "license": "ISC",
