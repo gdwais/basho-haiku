@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 // configuration ==================================
 var config = require('./config/default');
 console.log('connecting to mongodb at ' + config.DB_URL);
-mongoose.connect(config.DB_URL);
+mongoose.connect(process.env.DB_URL || config.DB_URL);
 
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json'}));
