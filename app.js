@@ -21,6 +21,6 @@ app.use(express.static(__dirname + '/views'));
 require('./app/routes')(app);
 
 //start app =======================================
-app.listen(config.PORT);
+app.listen(process.env.PORT || 5750);
 console.log('basho-haiku api running on port ' + config.PORT);
 exports = module.exports = app;
