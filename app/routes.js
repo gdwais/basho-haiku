@@ -26,11 +26,10 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/api/v1/haiku/random', function(req, res) {
+    app.get('/api/v1/random_haiku', function(req, res) {
         HaikuModel.count().exec(function (err, count) {
-            var random = Math.floor(Math.random() * count);
-            HaikuModel.findOne().skip(random).exec(
-              function (err, result) {
+            var random = Math.floor(Math.random() * count) + 1;
+            HaikuModel.findOne().skip(random).exec(function (err, response) {
                 if (err) {
                     console.log(err);
                     res.send(err);
@@ -40,6 +39,7 @@ module.exports = function(app) {
               });
           });
     });
+
     app.post('/api/v1/haiku', function(req, res) {
         var data = req.body;
         data.CreatedDate = new Date();
