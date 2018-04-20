@@ -1,5 +1,6 @@
 //app/routes.js
 var HaikuModel = require('./models/haiku');
+var syllable = require('syllable');  //for counting syllables
 
 module.exports = function(app) {
 
@@ -9,6 +10,13 @@ module.exports = function(app) {
                 console.log(err);
                 res.send(err);
             } else {
+                
+                var haikus = [];
+                response.forEach(function(h) {
+                    var haiku = h._doc;
+                    haiku.syllableCount = syllable(h.FirstLine) + syllable(h.SecondLine) + syllable(h.ThirdLine); 
+                    haikus.push(haiku);
+                });
                 res.json(response);
             }
         });
