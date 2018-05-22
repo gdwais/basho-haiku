@@ -12,8 +12,8 @@
 	<style>
 		html 					{ overflow-y:scroll; }
 		body 					{ padding-top:50px; }
-		#todo-list 				{ margin-bottom:30px; }
-		#todo-form 	 			{ margin-bottom:50px; }
+		#haiku-list 				{ margin-bottom:30px; }
+		#haiku-form 	 			{ margin-bottom:50px; }
 	</style>
 
 	<!-- SPELLS -->
@@ -21,23 +21,23 @@
 	<script src="core.js"></script>
 
 </head>
-<!-- SET THE CONTROLLER AND GET ALL TODOS WITH INITIALIZE FUNCTION -->
+<!-- SET THE CONTROLLER AND GET ALL HAIKUS WITH INITIALIZE FUNCTION -->
 <body ng-controller="mainController">
 	<div class="container">
 
-		<!-- HEADER AND TODO COUNT -->
+		<!-- HEADER AND HAIKU COUNT -->
 		<div class="jumbotron text-center">
-			<h1>basho-haiku <span class="label label-info">{{ todos.length }}</span></h1>
+			<h1>basho-haiku <span class="label label-info">{{ haikus.length }}</span></h1>
 		</div>
 
-		<!-- TODO LIST -->
-		<div id="todo-list" class="row">
+		<!-- HAIKU LIST -->
+		<div id="haiku-list" class="row">
 			<div class="col-sm-4 col-sm-offset-4">
 
-				<!-- LOOP OVER THE TODOS IN $scope.todos -->
-				<div class="checkbox" ng-repeat="todo in todos">
+				<!-- LOOP OVER THE HAIKUS IN $scope.haikus -->
+				<div class="checkbox" ng-repeat="haiku in haikus">
 					<label>
-						<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
+						<input type="checkbox" ng-click="deleteHaiku(haiku._id)"> {{ haiku.Title }}
 					</label>
 				</div>
 
@@ -45,26 +45,27 @@
 		</div>
 
 		
-		<div id="todo-form" class="row">
+		<div id="haiku-form" class="row">
 			<div class="col-sm-8 col-sm-offset-2 text-center">
 				<form>
 					<div class="form-group">
 
 						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                        <input type="text" class="form-control input-lg text-center" placeholder="line 1" ng-model="formData.text">
-                        <input type="text" class="form-control input-lg text-center" placeholder="line 2" ng-model="formData.text">
-                        <input type="text" class="form-control input-lg text-center" placeholder="line 3" ng-model="formData.text">
+						<input type="text" class="form-control input-lg text-center" placeholder="title" ng-model="formData.Title">
+						<input type="text" class="form-control input-lg text-center" placeholder="first line" ng-model="formData.FirstLine">
+						<input type="text" class="form-control input-lg text-center" placeholder="second line" ng-model="formData.SecondLine">
+						<input type="text" class="form-control input-lg text-center" placeholder="third line" ng-model="formData.ThirdLine">
+						<input type="text" class="form-control input-lg text-center" placeholder="author" ng-model="formData.Author">
 					</div>
 
-					<!-- createToDo() WILL CREATE NEW TODOS -->
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+					<!-- createHaiku() WILL CREATE NEW HAIKUS -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createHaiku()">Add</button>
 				</form>
 			</div>
 		</div>
 
 		<div class="text-center text-muted">
-			<!-- <p>A demo by <a href="http://scotch.io">Scotch</a>.</p> -->
-			<!-- <p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular">tutorial</a>.</p> -->
+			
 		</div>
 
 	</div>
