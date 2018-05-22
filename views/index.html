@@ -1,24 +1,22 @@
 <!doctype html>
 <html ng-app="basho-haiku">
 <head>
-	<!-- META -->
+	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
 
-	<title>Node/Angular Haiku App</title>
+	<title>Basho-Haiku</title>
 
-	<!-- SCROLLS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
 	<style>
 		html 					{ overflow-y:scroll; }
 		body 					{ padding-top:50px; }
-		#haiku-list 				{ margin-bottom:30px; }
-		#haiku-form 	 			{ margin-bottom:50px; }
+		#haiku-list 			{ margin-bottom:30px; }
+		#haiku-form 	 		{ margin-bottom:50px; }
 	</style>
 
-	<!-- SPELLS -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
-	<script src="core.js"></script>
+	<script src="service.js"></script>
 
 </head>
 <!-- SET THE CONTROLLER AND GET ALL HAIKUS WITH INITIALIZE FUNCTION -->
@@ -30,21 +28,6 @@
 			<h1>basho-haiku <span class="label label-info">{{ haikus.length }}</span></h1>
 		</div>
 
-		<!-- HAIKU LIST -->
-		<div id="haiku-list" class="row">
-			<div class="col-sm-4 col-sm-offset-4">
-
-				<!-- LOOP OVER THE HAIKUS IN $scope.haikus -->
-				<div class="checkbox" ng-repeat="haiku in haikus">
-					<label>
-						<input type="checkbox" ng-click="deleteHaiku(haiku._id)"> {{ haiku.Title }}
-					</label>
-				</div>
-
-			</div>
-		</div>
-
-		
 		<div id="haiku-form" class="row">
 			<div class="col-sm-8 col-sm-offset-2 text-center">
 				<form>
@@ -63,6 +46,24 @@
 				</form>
 			</div>
 		</div>
+
+		<!-- HAIKU LIST -->
+		<div id="haiku-list" class="row">
+				<div class="col-sm-4 col-sm-offset-4">
+	
+					<!-- LOOP OVER THE HAIKUS IN $scope.haikus -->
+					<div class="checkbox" ng-repeat="haiku in haikus">
+						<label>
+							<input type="checkbox" ng-click="deleteHaiku(haiku._id)"> {{ haiku.Title }}
+								</br>{{ haiku.FirstLine }}
+								</br>{{ haiku.SecondLine }}
+								</br>{{ haiku.ThirdLine }}
+								</br>{{ haiku.Author}}
+								</br>
+							</label>
+						</div>
+				</div>
+			</div>
 
 		<div class="text-center text-muted">
 			
