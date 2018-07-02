@@ -1,7 +1,75 @@
-<!DOCTYPE html>
-<html>
-<body>
+<!doctype html>
+<html ng-app="basho-haiku">
+<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
 
-<h1>Basho Haiku</h1>
+	<title>Basho-Haiku</title>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#haiku-list 			{ margin-bottom:30px; }
+		#haiku-form 	 		{ margin-bottom:50px; }
+	</style>
+
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+	<script src="service.js"></script>
+
+</head>
+<!-- SET THE CONTROLLER AND GET ALL HAIKUS WITH INITIALIZE FUNCTION -->
+<body ng-controller="mainController">
+	<div class="container">
+
+		<!-- HEADER AND HAIKU COUNT -->
+		<div class="jumbotron text-center">
+			<h1>basho-haiku <span class="label label-info">{{ haikus.length }}</span></h1>
+		</div>
+
+		<div id="haiku-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center" placeholder="title" ng-model="formData.Title">
+						<input type="text" class="form-control input-lg text-center" placeholder="first line" ng-model="formData.FirstLine">
+						<input type="text" class="form-control input-lg text-center" placeholder="second line" ng-model="formData.SecondLine">
+						<input type="text" class="form-control input-lg text-center" placeholder="third line" ng-model="formData.ThirdLine">
+						<input type="text" class="form-control input-lg text-center" placeholder="author" ng-model="formData.Author">
+					</div>
+
+					<!-- createHaiku() WILL CREATE NEW HAIKUS -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createHaiku()">Add</button>
+				</form>
+			</div>
+		</div>
+
+		<!-- HAIKU LIST -->
+		<div id="haiku-list" class="row">
+				<div class="col-sm-4 col-sm-offset-4">
+	
+					<!-- LOOP OVER THE HAIKUS IN $scope.haikus -->
+					<div class="checkbox" ng-repeat="haiku in haikus">
+						<label>
+							<input type="checkbox" ng-click="deleteHaiku(haiku._id)"> {{ haiku.Title }}
+								</br>{{ haiku.FirstLine }}
+								</br>{{ haiku.SecondLine }}
+								</br>{{ haiku.ThirdLine }}
+								</br>{{ haiku.Author}}
+								</br>
+							</label>
+						</div>
+				</div>
+			</div>
+
+		<div class="text-center text-muted">
+			
+		</div>
+
+	</div>
+
 </body>
 </html>
