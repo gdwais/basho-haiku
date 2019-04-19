@@ -5,7 +5,11 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "debug": "node inspect app.js"
+    "debug": "node inspect app.js",
+    "reinstall": "rm -rf node_modules && time npm install",
+    "getscripts": "node -e \"console.log(require('./package.json').scripts)\"",
+    "getversion": "node -e \"console.log(require('./package.json').version)\"",
+    "getname": "node -e \"console.log(require('./package.json').name)\""
   },
   "author": "Dalton Wais",
   "license": "ISC",
